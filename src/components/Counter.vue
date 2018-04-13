@@ -1,18 +1,20 @@
 <template>
     <div>
-        <button class="btn btn-primary" @click="increment">Increment</button>
-        <button class="btn btn-primary" @click="decrement">Decrement</button>
+        <button class="btn btn-primary" @click="increment(100)">Increment</button>
+        <button class="btn btn-primary" @click="decrement(50)">Decrement</button>
     </div>
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
-  export default {
-    methods: {
-      ...mapMutations([
-        'increment',
-        'decrement'
-      ])
+    import {mapActions} from 'vuex';
+    import * as types from '../store/types';
+
+    export default {
+        methods: {
+            ...mapActions({
+                increment: types.COUNTER_INCREMENT,
+                decrement: types.COUNTER_DECREMENT
+            })
+        }
     }
-  }
 </script>
